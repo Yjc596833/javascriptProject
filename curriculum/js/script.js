@@ -1,7 +1,7 @@
 /*
  * @Author: ye jiancong
  * @Date: 2020-09-16 13:59:01
- * @LastEditTime: 2020-09-17 11:06:21
+ * @LastEditTime: 2020-09-17 16:39:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \javascriptProject\curriculum\js\script.js
@@ -23,7 +23,14 @@ const tableDom=createEl('table')  //document.createElement('table');  //创建DO
  * @id {string}  
  */
 function $(id){
-  return  document.getElementById(id);
+    if(typeof id !='string')
+    {
+      throw new Error('参数ID必须是一个字符串');
+    }
+   //debugger;  
+   const dom=document.getElementById(id);
+    if(!dom){throw new Error('取不到');}
+    return dom;
 };    
 
 /**
