@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-09-18 11:59:44
- * @LastEditTime: 2020-09-18 14:42:11
+ * @LastEditTime: 2020-09-18 16:14:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \javascriptProject\curriculum\js\dataTable.js
@@ -82,7 +82,8 @@ const tableBodyData=[
         },
         like:[
             {tag:'跑步',color:'#468d9c'},
-            {tag:'看电影',color:'#469c4e'}
+            {tag:'看电影',color:'#469c4e'},
+            {tag:'睡觉',color:'#000000'}
         ],
         rank:{
             name:'小白',
