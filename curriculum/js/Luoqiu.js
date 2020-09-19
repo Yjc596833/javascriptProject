@@ -11,6 +11,8 @@
     "use strict";  //严格模式
     //命名空间
     if(!window.LuoqiuJS){window.LuoqiuJS={}};
+
+
     /**
      * @获取ID的DOM元素: 
      * @id {string}  
@@ -26,23 +28,7 @@
         return dom;
     };    
     window.LuoqiuJS.$=$;
-    /**
-     * @创建元素: 
-     * @node {string}  
-     */
-    function createEl(node){
-        return document.createElement(node);
-    }
-    window.LuoqiuJS.createEl=createEl;
-    /**
-     * @设置节点属性: 
-     * @param {type} 
-     * @return {type} 
-     */
-    function setAttri(node,style,value){
-        node.setAttribute(style,value);
-    }
-    window.LuoqiuJS.setAtrri=setAttri;
+
     /**
      * 获取节点属性
      * @param {*} node 
@@ -53,9 +39,66 @@
     }
     window.LuoqiuJS.getAttr=getAttr;
 
+    /**
+     * 获取 className 对象
+     * @param {string} className 
+     */
+    function getClassName(className){
+    return  document.getElementsByClassName(className)    //  'className'
+    //return document.querySelector(className)  eg  '.classNAME'  拿的是单个对象 
+    //return document.querySelectorAll()   拿的是数据 
+    }
+    window.LuoqiuJS.getClassName=getClassName;
 
     /**
-     * 
+     * 获取标签对象(当前节点下所有层级中的targets)
+     * @param {}} node 
+     */
+    function getTagName(parentNode,target){
+        return parentNode.getElementsByTagName(target);
+    }
+    window.LuoqiuJS.getTagName=getTagName;
+
+    /**
+     * 获取标签对象（第一层targets）
+     * @param {} node 
+     */
+    function getChildren(parentNode){
+        return parentNode.children;
+    }
+    window.LuoqiuJS.getChildren=getChildren;
+
+    /**
+     * @创建元素: 
+     * @node {string}  
+     */
+    function createEl(node){
+        return document.createElement(node);
+    }
+    window.LuoqiuJS.createEl=createEl;
+
+    /**
+     * 添加子节点到父级末尾创建对象
+     * @param {} node 
+     */
+    function addChild(parentNode,node)
+    {
+        parentNode.appendChild(node);
+    }
+    window.LuoqiuJS.addChild=addChild;
+
+
+    /**
+     * @设置节点属性: 
+     * @param {type} 
+     * @return {type} 
+     */
+    function setAttri(node,style,value){
+        node.setAttribute(style,value);
+    }
+    window.LuoqiuJS.setAtrri=setAttri;
+    /**
+     * 设置属性
      * @param {*} node 
      * @param {*} styles 
      */
@@ -69,19 +112,6 @@
         }
       }
       window.LuoqiuJS.setAttrs=setAttrs;
-
-      /**
-       * 获取 className 对象
-       * @param {string} className 
-       */
-      function getClassName(className){
-        return  document.getElementsByClassName(className)    //  'className'
-        //return document.querySelector(className)  eg  '.classNAME'  拿的是单个对象 
-        //return document.querySelectorAll()   拿的是数据 
-      }
-      window.LuoqiuJS.getClassName=getClassName;
-
-
 
       /**
        * addEventListener 方法
