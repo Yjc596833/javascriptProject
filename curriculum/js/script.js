@@ -41,3 +41,27 @@ tableDom.innerHTML=theadHtml+tbodyHtml;
 
 divDom.appendChild(tableDom);
 
+
+
+/**
+ * **************************************************************
+ */
+
+const addInfoButtonDOM= window.LuoqiuJS.getClassName('add-info-button')[0];
+// console.log(addInfoButtonDOM);
+// addInfoButtonDOM.onclick=function(){
+//   alert(11);
+// }
+//addInfoButtonDOM,addEventListener('click',function(){},false)
+const infoDialog=window.LuoqiuJS.$('info-dialog');
+const closeDialog=document.querySelector('.close-dialog');
+
+
+console.log(closeDialog);
+window.LuoqiuJS.addEvent(addInfoButtonDOM,'click',function(){
+  infoDialog.classList.add('dialog-show');
+})
+
+window.LuoqiuJS.addEvent(closeDialog,'click',function(){
+  infoDialog.classList.remove('dialog-show');
+})

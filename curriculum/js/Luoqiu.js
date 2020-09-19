@@ -69,6 +69,31 @@
         }
       }
       window.LuoqiuJS.setAttrs=setAttrs;
+
+      /**
+       * 获取 className 对象
+       * @param {string} className 
+       */
+      function getClassName(className){
+        return  document.getElementsByClassName(className)    //  'className'
+        //return document.querySelector(className)  eg  '.classNAME'  拿的是单个对象 
+        //return document.querySelectorAll()   拿的是数据 
+      }
+      window.LuoqiuJS.getClassName=getClassName;
+
+
+
+      /**
+       * addEventListener 方法
+       */
+      function addEvent(domNode,evnetType,handlerFunction){
+            if(window.addEventListener){
+                    domNode.addEventListener(evnetType,handlerFunction);
+            }
+            else
+            domNode.attachEvent(`on${evnetType}`,handlerFunction);
+      }
+      window.LuoqiuJS.addEvent=addEvent;
 })()
 
 
