@@ -14,8 +14,10 @@
     <title>手把手撸码前端 javascript学习</title>
     <!-- <script src="http://www.web-jshtml.cn/curriculum/javascript/js/curriculum.js"></script> -->
     <link rel="stylesheet" href="http://www.web-jshtml.cn/curriculum/javascript/css/base.css">
+    <link rel="stylesheet" href="./css/ui.css">
 </head>
 <body>
+    <!-- <div id="alert-ui" >test</div> -->
     <a href="demo.html" class="demo">项目</a>
     <header></header>
     <div id="container-wrap">
@@ -53,7 +55,7 @@
                 <li><a href="javascript:void(0);" class="menu-button button add-info-button">添加信息</a></li>
             </ul>
         </div>
-        <div id="info-dialog" class=" dialog-show" >  <!--追加类名 dialog-show-->
+        <div id="info-dialog" class="dialog-show">  <!--追加类名 dialog-show-->
             <div class="form-content">
                 <a href="javascript:void(0);" class="close-dialog">x</a>
                 <form>
@@ -89,10 +91,18 @@
                         <label for="">姓名：</label>
                         <div class="wrap">
                             <div class="form-control">
-                                <input type="text" class="input">
+                                <input type="text" class="input" id="usernameInput">
                             </div>
-                                <span class="gender icon-boy "></span>
-                                <span class="gender icon-girl"></span>
+                            <div class="form-sex">
+                                <div class="gender-wrap">
+                                    <span class="gender icon-girl option-05">
+                                        <input type="radio" value="1">
+                                    </span>
+                                    <span class="gender icon-boy option-05">
+                                        <input type="radio" value="2">
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-item">
@@ -146,6 +156,7 @@
         </div>
     </div>
     <script src="./js/Luoqiu.js"></script>
+    <script src="./js/ui.js"></script>
     <script src="./js/dom.js"></script>
     <script src="./js/createTbodyData.js"></script>
     <script src="./js/dataTable.js"></script>

@@ -16,3 +16,12 @@ const faceView=window.LuoqiuJS.getClassName('face-view')[0]; //document.querySel
 const faceViewList=document.querySelector('.face-view-list');
 //获取删除头像按钮
 const faceDelButton=window.LuoqiuJS.getTagName(faceView,'a')[0]; //注意是标签名 ！！！ 
+//头像存储
+let faceSave=null;
+
+
+/**
+ * ************* input DOM 对象 *******************************************************
+ */
+
+ const inputUserName=window.LuoqiuJS.$('usernameInput');

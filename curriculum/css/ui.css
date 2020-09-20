@@ -1,0 +1,40 @@
+#alert-ui{
+    position: fixed;
+    left: 50%;
+    top: -300px;
+    margin-left:-195px ;
+    width: 350px;
+    padding: 20px;
+    background-color: #eeeef0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d7d7d9;
+    border-radius: 20px;
+    color: #000;
+    font-weight: normal;
+    -webkit-transition: all .5s ease 0s ;
+    -moz-transition: all .5s ease 0s ;
+    -ms-transition: all .5s ease 0s ;
+    -o-transition: all .5s ease 0s ;
+    transition: all .5s ease 0s ;
+    z-index: 999;
+}
+
+
+
+#alert-ui.show{
+    top: 50px;
+}
+
+#alert-ui.message-theme-success{
+    background-color: #e5f3dd;
+    color: #67c23a;
+    border-color: #d2e9c6;
+}
+
+
+#alert-ui.message-theme-warning{
+    background-color: #e5f3dd;
+    color: #e6a23c;
+    border-color: #eddfcc;
+}

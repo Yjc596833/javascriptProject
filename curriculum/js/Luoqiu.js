@@ -72,8 +72,12 @@
      * @创建元素: 
      * @node {string}  
      */
-    function createEl(node){
-        return document.createElement(node);
+    function createEl(node,attr){
+        const dom=document.createElement(node);
+        if(attr){
+            LuoqiuJS.setAttrs(dom,attr);
+        }
+        return dom;
     }
     window.LuoqiuJS.createEl=createEl;
 

@@ -75,13 +75,13 @@ function handlerFaceListCallback(data){
 window.LuoqiuJS.addEvent(faceViewList,'click',function(e){   //事件监听
   const ev=e || window.event;
   //阻止事件冒泡
-  // if(ev.stopPropagation){
-  //   ev.stopPropagation();
-  // }else{
-  //   ev.cancelBubble=true;   //IE
-  // }
+  if(ev.stopPropagation){
+    ev.stopPropagation();
+  }else{
+    ev.cancelBubble=true;   //IE
+  }
 
-  ev.stopPropagation && ( ev.stopPropagation() || (ev.cancelBubble = true) );
+  //ev.stopPropagation && ( ev.stopPropagation() || (ev.cancelBubble = true) );
 
   //获取标签
   let nodeName=e.target.nodeName.toLowerCase();
@@ -91,14 +91,23 @@ window.LuoqiuJS.addEvent(faceViewList,'click',function(e){   //事件监听
   const getImg=window.LuoqiuJS.getTagName(faceView,'img');
   //点击获取src
   let getSrc=``;
+  //清除头像高光
+  if(faceSave){faceSave.classList.remove("active");} //清除上一次对象的样式  if(faceSave) 判断是否存在
+
   //更新src
   if(nodeName=='li'){
     const img=window.LuoqiuJS.getChildren(e.target)[0];
     getSrc=img.src;
+    //存储头像 li 标签 
+    faceSave=ev.target;
   }
   if(nodeName=='img'){
     getSrc=e.target.src;
+    faceSave=ev.target.parentNode;
   }
+
+  faceSave.classList.add("active");
+
   //无论是添加还是删除，都只是对img对象进行操作
   //更新头像
   //faceUpdate(getImg,createImg,getSrc,"add");
@@ -117,8 +126,6 @@ window.LuoqiuJS.addEvent(faceViewList,'click',function(e){   //事件监听
   //   createImg,
   //   getSrc
   // })
-
-
 })
 
 window.LuoqiuJS.addEvent(faceDelButton,'click',function(e){
@@ -132,5 +139,30 @@ window.LuoqiuJS.addEvent(faceDelButton,'click',function(e){
       type:"del"
     });
     //阻止事件冒泡
-    ev.stopPropagation && (ev.stopPropagation() || (ev.cancelBubble = true));
+    if(ev.stopPropagation){
+      ev.stopPropagation();
+    }else{
+      ev.cancelBubble=true;   //IE
+    }
 })
+
+
+
+
+
+
+inputUserName.onblur=function(){   //谁绑定方法，this就指向谁
+    //this
+    let value=this.value;
+    if(!value)
+    {
+     // alert("姓名不能为空");
+    }
+    console.log(this.value);
+    window.luoqiuMsg.$message( {
+      id:'alert-ui',
+      message:'test',
+      type:'success'
+    });
+   // console.log(inputUserName.value);
+}
