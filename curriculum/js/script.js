@@ -8,20 +8,6 @@
  */
 
 "use strict";  //严格模式
-//获取DIV
-const divDom=window.LuoqiuJS.$('table-data-wrap');  //获取元素
-//添加信息按钮
-const addInfoButtonDOM= window.LuoqiuJS.getClassName('add-info-button')[0];     
-//创建DOM元素
-const tableDom=window.LuoqiuJS.createEl('table')  //document.createElement('table');  
-//通过ID获取弹窗
-const infoDialog=window.LuoqiuJS.$('info-dialog'); 
-//通过类名获取关闭弹窗的类  
-const closeDialog=document.querySelector('.close-dialog'); 
-//获取头像区域
-const faceView=window.LuoqiuJS.getClassName('face-view')[0]; //document.querySelector('.face-view');  //window.LuoqiuJS.getClassName('face-view')[0];
-//头像列表区域
-const faceViewList=document.querySelector('.face-view-list');
 
 //tableDom.setAttribute('width','100%');  //设置属性  或者使用 tableDom.width='100%';
 window.LuoqiuJS.setAttrs(tableDom,{
@@ -86,7 +72,17 @@ function handlerFaceListCallback(data){
     }
 }
 
-window.LuoqiuJS.addEvent(faceViewList,'click',function(e){   //事件冒泡
+window.LuoqiuJS.addEvent(faceViewList,'click',function(e){   //事件监听
+  const ev=e || window.event;
+  //阻止事件冒泡
+  // if(ev.stopPropagation){
+  //   ev.stopPropagation();
+  // }else{
+  //   ev.cancelBubble=true;   //IE
+  // }
+
+  ev.stopPropagation && ( ev.stopPropagation() || (ev.cancelBubble = true) );
+
   //获取标签
   let nodeName=e.target.nodeName.toLowerCase();
   //创建img对象    
@@ -103,15 +99,38 @@ window.LuoqiuJS.addEvent(faceViewList,'click',function(e){   //事件冒泡
   if(nodeName=='img'){
     getSrc=e.target.src;
   }
-  //头像存在，则修改头像的src
-  if(getImg.length!=0){
-    getImg[0].src=getSrc;
-  }else{
-    //img 写入 src
-    //createImg.src=getSrc
-    window.LuoqiuJS.setAttrs(createImg,{'src':getSrc});
-    window.LuoqiuJS.addChild(faceView,createImg);
-  }
+  //无论是添加还是删除，都只是对img对象进行操作
+  //更新头像
+  //faceUpdate(getImg,createImg,getSrc,"add");
+  //es5
+  faceUpdate({
+    src:getSrc,
+    gImg:getImg,
+    cImg:createImg,
+    type:"add"
+  });
+
+  //es6
+  // faceUpdate({  // 对象的 key 和 value 是相同的情况下，用一个参数就可以
+  //   type:"add",
+  //   getImg,
+  //   createImg,
+  //   getSrc
+  // })
+
+
 })
 
-console.log(faceView);
+window.LuoqiuJS.addEvent(faceDelButton,'click',function(e){
+    const ev= e || window.event;
+    //获取img对象
+    const getImg=window.LuoqiuJS.getTagName(faceView,'img')[0];   
+    //删除某个父级下面的对象
+    //faceUpdate(getImg,"","","del");
+    faceUpdate({
+      gImg:getImg,
+      type:"del"
+    });
+    //阻止事件冒泡
+    ev.stopPropagation && (ev.stopPropagation() || (ev.cancelBubble = true));
+})
